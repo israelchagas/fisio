@@ -1,0 +1,213 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Embed Google Map, 100% Free</title>
+    <meta name="description" content="Embed Google Maps for free. Just enter your company name or address, copy the generated HTML embed code, and paste the iframe into your website. It’s that easy!">
+    <link rel="canonical" href="https://www.embedgooglemap.net/">
+    <link rel="icon" href="favicon.ico">
+    <meta property="og:title" content="Embed Google Map, 100% Free">
+    <meta property="og:description" content="Embed Google Maps for free. Just enter your company name or address, copy the generated HTML embed code, and paste the iframe into your website. It’s that easy!">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.embedgooglemap.net/">
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-slider.min.css">
+    <!-- Custom CSS -->
+    <link href="css/custom.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container custom-shadow">
+    <div class="row">
+        <div class="col-lg-12" style="padding-right:0px;padding-left:0px;">
+
+            <div class="box" id="generate_map">
+                <div class="mb-3 text-right">
+                    <a href="https://community.embedgooglemap.net" class="btn btn-success font-weight-bold">
+                        Community
+                    </a>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="w-100 p-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div style="display: flex; align-items: center;">
+                                        <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2017 1816"><path d="M831 909.9c37.9 47.4 76.5 107 96.7 143 24.6 46.8 34.8 78.4 53.1 135 10.7 31 20.9 40.4 42.3 40.4 23.4 0 34.1-15.8 42.3-40.4 17.1-53.1 30.3-93.5 51.2-132 80.6-152 212-260 286-408 0 0 48.7-90.4 48.7-217 0-118-48-200-48-200l-572 680z" fill="#34a853"></path><path d="M637 631.9c46.1 105 134 197 194 278l318-377s-44.9 58.8-126 58.8c-90.4 0-164-72-164-163 0-62.6 37.3-106 37.3-106-234 34.8-221 91.5-260 309z" fill="#fbbc04"></path><path d="M1153 19.6c106 34.1 196 106 250 211l-254 303s37.3-43.6 37.3-106c0-92.9-78.4-163-163-163-80.3 0-126 58.1-126 58.1 19.5-44.4 221-288 256-303z" fill="#4285f4"></path><path d="M695 152.9c63.2-75.2 174-153 327-153 73.9 0 130 19.6 130 19.6l-255 303c-17.2-9.33-185-140-202-170z" fill="#1a73e8"></path><path d="M637 631.9s-41.7-82.8-41.7-202c0-113 44.2-212 100-276l202 170-260 308z" fill="#ea4335"></path></svg>
+                                        <div style="font-weight: 500; font-size: 20px;">Embed Google Map</div>
+                                    </div>
+                                    <div id="locationConf">
+                                        <div class="form-group">
+                                            <label class="font-weight-bold" for="address">Type Your Address</label>
+                                            <input type="text" class="form-control" id="address" value="2880 Broadway, New York" oninput="refreshMap(getSelectedMapKind())">
+                                        </div>
+                                    </div>
+                                    <div id="directionConf" style="display:none;">
+                                        <div class="form-group">
+                                            <label class="font-weight-bold" for="sAddress">Start Address</label>
+                                            <input type="text" class="form-control" id="sAddress" value="2880 Broadway, New York" oninput="refreshMap(getSelectedMapKind())">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="font-weight-bold" for="dAddress">Destination Address</label>
+                                            <input type="text" class="form-control" id="dAddress" value="University of Oxford" oninput="refreshMap(getSelectedMapKind())">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="font-weight-bold" for="map_type">Map Type</label>
+                                        <select id="map_type" class="custom-select" onchange="refreshMap(getSelectedMapKind())">
+                                            <option value="" selected=""> Roadmap </option>
+                                            <option value="k"> Satellite </option>
+                                            <option value="h"> Satellite with street names </option>
+                                            <option value="p"> Terrain </option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="font-weight-bold" for="zoomSlider">Zoom Distance</label>
+                                        <input id="mapZoom" style="width:100%;" data-slider-id="zoomSlider" type="text" data-slider-min="1" data-slider-max="20" data-slider-step="1" data-slider-value="14" onchange="refreshMap(getSelectedMapKind())">
+                                        <div id="zoomValue"></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label class="font-weight-bold" for="widthSlider">Width</label>
+                                                <br>
+                                                <input id="mapWidth" style="width:100%;" data-slider-id="widthSlider" type="text" data-slider-min="1" data-slider-max="2048" data-slider-step="1" data-slider-value="600" onchange="mapCanvas(this.id)">
+                                                <div class="input-group">
+                                                    <input id="widthValue" type="number" class="form-control" value="650" min="1" aria-describedby="addon1" oninput="isNumber(event);setSliderVal(this.id);mapCanvas(this.id);">
+                                                    <div class="input-group-append"> <span class="input-group-text" id="addon1">px</span> </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label class="font-weight-bold" for="heightSlider">Height</label>
+                                                <br>
+                                                <input id="mapHeight" style="width:100%;" data-slider-id="heightSlider" type="text" data-slider-min="1" data-slider-max="2048" data-slider-step="1" data-slider-value="400" onchange="mapCanvas(this.id)">
+                                                <div class="input-group">
+                                                    <input id="heightValue" type="number" class="form-control" value="400" min="1" aria-describedby="addon2" oninput="isNumber(event);setSliderVal(this.id);mapCanvas(this.id);">
+                                                    <div class="input-group-append"> <span class="input-group-text" id="addon2">px</span> </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" id="isResponsive" onchange="refreshMap(getSelectedMapKind())">
+                                        <label class="custom-control-label font-weight-bold" for="isResponsive">Make Map Responsive</label>
+                                    </div>
+                                    <button type="button" class="btn btn-lg btn-block btn-success font-weight-bold" onclick="generateCode();ym(91769039,'reachGoal','get');return true" data-toggle="modal" data-target="#codeView">Generate Code</button>
+                                    <div class="modal fade" id="codeView" tabindex="-1" role="dialog" aria-labelledby="modalCenterTitle" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title map-code" id="modalLongTitle">Map Code</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span> </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p class="text-center" style="font-size:14px;">Copy and paste the below code within the <code>&lt;body&gt;</code> of the web page where you would like to embed google map.</p>
+                                                    <textarea class="form-control" style="font-family: 'Lucida Console', Courier, monospace; font-size:10px;" id="codeOutput" rows="2" onclick="this.focus();this.select()" readonly=""></textarea>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-success font-weight-bold" id="copyToClip" onclick="copyToClip();ym(91769039,'reachGoal','copy');return true">Copy code to clipboard</button>
+                                                    <button type="button" class="btn btn-secondary font-weight-bold" data-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="w-100 p-3 overflow-auto">
+                            <div id="map-container">
+                                <iframe class="custom-shadow" id="map-canvas" width="670" height="570" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="../www.google.com/maps/embed/origin%3Dmfe%26pb%3D!1m3!2m1!1s2880%2BBroadway%2C%2BNew%2BYork!6i14!3m1!1sen!5m1!1sen.html"></iframe>
+                            </div>
+                            <div id="directionNote" style="display:none;padding-top:15px;">
+                                <p><span class="text-danger font-weight-bold">Note:</span> Adjust <span class="font-weight-bold">Zoom Distance</span> if route is not visible</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="card">
+            <div class="col-lg-12">
+                <h1>Embed Google Maps on Your Website for Free</h1>
+                <p>If your website represents a real place, adding a map is one of those things that quietly improves everything. Visitors don’t want to copy addresses, open new tabs, or figure things out on their own. They want to see where you are immediately.</p>
+                <p>That’s exactly what an embedded Google Map does.</p>
+                <h2>What Google Maps Is</h2>
+                <p>Google Maps is the mapping service most people already rely on every day. It shows street maps, satellite imagery, nearby businesses, traffic conditions, public transport routes, walking directions, and real locations with reviews and photos.</p>
+                <p>Because users already trust and recognize it, seeing Google Maps on your site feels natural and familiar.</p>
+                <h2>Why Embedding a Map Helps Your Website</h2>
+                <p>Adding a map isn’t just decorative. It solves real problems for visitors.</p>
+                <ul>
+                    <li>People can get directions without leaving your site</li>
+                    <li>Your address becomes easier to understand visually</li>
+                    <li>Nearby landmarks, parking, and points of interest are visible</li>
+                    <li>Your business feels more real and trustworthy</li>
+                    <li>The page feels more complete and modern, especially on mobile</li>
+                </ul>
+                <p>For local businesses in particular, this often reduces confusion and unnecessary questions.</p>
+                <p>If you’re publishing technical guides like this one, small language tweaks make a big difference. Running a finished draft through ai humanization or readability pass - for example you can <a href="https://cleverhumanizer.ai/">try best ai humanizer</a> - Clever AI Humanizer it can help remove robotic phrasing while keeping the original structure intact.</p>
+                <h2>How to Embed Google Maps Without an API</h2>
+                <p>You don’t need a Google Maps API key, billing account, or technical setup.</p>
+                <p>Using Embed-GoogleMap.com, the process is straightforward:</p>
+                <ol>
+                    <li>Enter your business name or address</li>
+                    <li>Select the correct place from the suggestions</li>
+                    <li>If needed, click directly on the map to fine-tune the location</li>
+                    <li>Adjust map settings like zoom, view type, width, and height</li>
+                    <li>Preview the map to make sure it looks right</li>
+                    <li>Click “Get Code”</li>
+                    <li>Copy the HTML code and paste it into your website</li>
+                    <li>Save your changes and refresh the page</li>
+                </ol>
+                <p>That’s it. The map is live.</p>
+                <h2>Where the Embed Code Works</h2>
+                <p>The generated code is platform-independent and works on most websites, including:</p>
+                <ul>
+                    <li>WordPress</li>
+                    <li>Wix</li>
+                    <li>Squarespace</li>
+                    <li>Shopify</li>
+                    <li>Webflow</li>
+                    <li>Custom HTML websites</li>
+                </ul>
+                <p>If your platform allows custom HTML blocks or embeds, it will work.</p>
+                <h2>Frequently Asked Questions</h2>
+                <h3>Is this really free?</h3>
+                <p>Yes. There’s no cost, no API key, and no billing setup required.</p>
+                <h3>Do I need technical skills?</h3>
+                <p>No. If you can copy and paste code, you can embed the map.</p>
+                <h3>Does the map work on mobile devices?</h3>
+                <p>Yes. It displays correctly on phones, tablets, and desktops.</p>
+                <h3>Can I change the map later?</h3>
+                <p>Yes. You can generate a new embed code at any time and replace the old one.</p>
+                <h3>Why not use the Google Maps API?</h3>
+                <p>For most websites, it’s unnecessary. The API requires setup, billing, and development work. An embedded map does the job with far less effort.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="copyright">Copyright © <a href="https://www.embedgooglemap.net/">www.embedgooglemap.net</a></div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- jQuery -->
+<script src="../cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" crossorigin="anonymous"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="../cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.min.js" crossorigin="anonymous"></script>
+<script src="../cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/11.0.2/bootstrap-slider.min.js" crossorigin="anonymous"></script>
+<script src="js/common.js"></script>
+
+</body></html>
