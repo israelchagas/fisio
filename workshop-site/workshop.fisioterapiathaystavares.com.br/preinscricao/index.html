@@ -191,6 +191,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/16
 				
 			
     <form class="metform-form-content" name="preinscricao" data-netlify="true" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="form-name" value="preinscricao" />
         <div class="elementor-element elementor-element-d8b5819 e-con-full e-flex wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-child">
             <div class="mf-input-wrapper" style="margin-bottom: 20px;">
                 <label class="mf-input-label">Qual é o seu nome completo?*</label>
@@ -257,11 +258,11 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/16
         <div class="elementor-element elementor-element-0b56385 e-grid e-con-boxed">
             <div class="mf-input-wrapper" style="margin-bottom: 20px;">
                 <label class="mf-input-label">Anexe aqui o documento de nada consta do CREFITO.*</label>
-                <input type="file" class="mf-input mf-input-file-upload" name="anexo_crefito" accept=".jpg, .jpeg, .gif, .png, .pdf" required />
+                <input type="file" class="mf-input mf-input-file-upload" name="anexo_crefito" accept=".jpg,.jpeg,.gif,.png,.pdf" required />
             </div>
             <div class="mf-input-wrapper" style="margin-bottom: 20px;">
                 <label class="mf-input-label">Anexe seu certificado de conclusão de curso do IMA.*</label>
-                <input type="file" class="mf-input mf-input-file-upload" name="anexo_certificado" accept=".jpg, .jpeg, .gif, .png, .pdf" required />
+                <input type="file" class="mf-input mf-input-file-upload" name="anexo_certificado" accept=".jpg,.jpeg,.gif,.png,.pdf" required />
             </div>
         </div>
 
@@ -362,18 +363,12 @@ var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false
 <script type="text/javascript" src="../wp-content/plugins/royal-elementor-addons/assets/js/lib/particles/particles_ver%3D3.0.6.js" id="wpr-particles-js"></script>
 <script type="text/javascript" src="../wp-content/plugins/royal-elementor-addons/assets/js/lib/jarallax/jarallax.min_ver%3D1.12.7.js" id="wpr-jarallax-js"></script>
 <script type="text/javascript" src="../wp-content/plugins/royal-elementor-addons/assets/js/lib/parallax/parallax.min_ver%3D1.0.js" id="wpr-parallax-hover-js"></script>
-<script type="text/javascript" src="../wp-content/plugins/metform/public/assets/lib/cute-alert/cute-alert_ver%3D4.0.4.js" id="cute-alert-js"></script>
-<script type="text/javascript" src="../wp-content/plugins/metform/public/assets/js/htm_ver%3D4.0.4.js" id="htm-js"></script>
+<!-- MetForm scripts removidos: interceptavam o submit e impediam o Netlify Forms de receber as respostas -->
 <script type="text/javascript" src="../wp-includes/js/dist/vendor/react.min_ver%3D18.3.1.1.js" id="react-js"></script>
 <script type="text/javascript" src="../wp-includes/js/dist/vendor/react-dom.min_ver%3D18.3.1.1.js" id="react-dom-js"></script>
 <script type="text/javascript" src="../wp-includes/js/dist/escape-html.min_ver%3D6561a406d2d232a6fbd2.js" id="wp-escape-html-js"></script>
 <script type="text/javascript" src="../wp-includes/js/dist/element.min_ver%3Da4eeeadd23c0d7ab1d2d.js" id="wp-element-js"></script>
-<script type="text/javascript" id="metform-app-js-extra">
-/* <![CDATA[ */
-var mf = {"postType":"page","restURI":"https:\/\/workshop.fisioterapiathaystavares.com.br\/wp-json\/metform\/v1\/forms\/views\/","minMsg1":"Minimum length should be ","Msg2":" character long.","maxMsg1":"Maximum length should be ","maxNum":"Maximum number should be ","minNum":"Minimum number should be "};
-/* ]]> */
-</script>
-<script type="text/javascript" src="../wp-content/plugins/metform/public/assets/js/app_ver%3D4.0.4.js" id="metform-app-js"></script>
+<!-- MetForm app script removido: usava AJAX para enviar ao WordPress REST API, bloqueando o Netlify Forms -->
 <script type="text/javascript" src="../wp-content/plugins/royal-elementor-addons/assets/js/lib/perfect-scrollbar/perfect-scrollbar.min_ver%3D0.4.9.js" id="wpr-popup-scroll-js-js"></script>
 <script type="text/javascript" src="../../cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.6/purify.min_ver%3D3.0.6.js" id="dompurify-js"></script>
 <script type="text/javascript" id="wpr-addons-js-js-extra">
