@@ -258,22 +258,36 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/16
         <div class="elementor-element elementor-element-0b56385 e-grid e-con-boxed">
             <div class="mf-input-wrapper" style="margin-bottom: 20px;">
                 <label class="mf-input-label">Anexe aqui o documento de nada consta do CREFITO.*</label>
-                <input type="file" class="mf-input mf-input-file-upload" name="anexo_crefito" accept=".jpg,.jpeg,.gif,.png,.pdf" required />
+                <input type="file" name="anexo_crefito" accept=".jpg,.jpeg,.gif,.png,.pdf" required style="display:block!important;visibility:visible!important;opacity:1!important;position:static!important;width:100%!important;height:auto!important;cursor:pointer!important;" />
             </div>
             <div class="mf-input-wrapper" style="margin-bottom: 20px;">
                 <label class="mf-input-label">Anexe seu certificado de conclusão de curso do IMA.*</label>
-                <input type="file" class="mf-input mf-input-file-upload" name="anexo_certificado" accept=".jpg,.jpeg,.gif,.png,.pdf" required />
+                <input type="file" name="anexo_certificado" accept=".jpg,.jpeg,.gif,.png,.pdf" required style="display:block!important;visibility:visible!important;opacity:1!important;position:static!important;width:100%!important;height:auto!important;cursor:pointer!important;" />
             </div>
         </div>
 
         <div class="elementor-element elementor-element-470fdd1 e-flex e-con-boxed">
             <div class="mf-btn-wraper" style="text-align: center; margin-top: 20px;">
-                <button type="submit" class="metform-btn metform-submit-btn">
+                <button type="submit" id="netlify-submit-btn" class="metform-btn">
                     <span>Concluir Pré-inscrição</span>
                 </button>
             </div>
         </div>
     </form>
+    <script>
+    (function() {
+        var form = document.querySelector('form[name="preinscricao"]');
+        if (!form) return;
+        // Captura o submit na fase de captura (antes de qualquer outro listener)
+        form.addEventListener('submit', function(e) {
+            // Permite submissão nativa — cancela qualquer preventDefault posterior
+            setTimeout(function() {
+                if (!e.defaultPrevented) return;
+                form.submit();
+            }, 0);
+        }, true); // true = fase de captura, roda ANTES dos demais handlers
+    })();
+    </script>
     
 		</div>				</div>
 					</div>
