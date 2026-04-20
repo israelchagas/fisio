@@ -1,0 +1,9 @@
+[[redirects]]
+  from = "/obrigado"
+  to = "/obrigado/"
+  status = 301
+
+[[redirects]]
+  from = "/preinscricao"
+  to = "/preinscricao/"
+  status = 301
